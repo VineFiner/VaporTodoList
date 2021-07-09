@@ -35,6 +35,9 @@ public func configure(_ app: Application) throws {
     if app.environment == .development {
         try app.autoMigrate().wait()
     }
+    
+    app.http.server.configuration.hostname = "0.0.0.0"
+    app.http.server.configuration.port = 9000
     // register routes
     try routes(app)
 }
